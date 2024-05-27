@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """the application file"""
-import storage from models
-import app_views from api.v1.views
+from storage import storage
+from api.v1.views import app_views
 from os import environ
 from flask import Flask, render_template, make_response, jsonify
 from flask_cors import CORS
@@ -16,6 +16,25 @@ app.register_blueprint(app_views)
 def close_db(error):
     """close storage"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """ 404 Error
+    ---
+    responses:
+      404:
+        description: a resource was not found
+    """
+    return make_response(jsonify({'error': "Not found"}), 404)
+
+
+app.config['SWAGGER'] = {
+    'title': 'AirBnB clone Restful API',
+    'uiversion': 3
+}
+
+Swagger(app)
 
 
 if __name__ == "__main__":
