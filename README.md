@@ -239,14 +239,16 @@ There should be one project repository per group. If you clone/fork/whatever a p
 
 More Info
 
-
+```
 Install Flask
 $ pip3 install Flask
 Video library(2 total)
 Search by title
 Python: Flask RestAPI
 AirBnB API
+```
 Tasks
+=====
 0. Restart from scratch!
 mandatory
 No no no! We are already too far in the project to restart everything.
